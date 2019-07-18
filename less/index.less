@@ -53,110 +53,266 @@ table {
 	box-sizing: border-box;
 
 }
+@base-font: 16px;
+@Acme: 'Acme', sans-serif;
+@white: white;
+@black: black;
+@tan: rgb(201, 162, 91);
+@gold: rgb(116, 83, 0);
+@crimson: rgb(41, 17, 17);
 
 html, body {
 	height: 100%;
 	background: #3d0000;
-	font-size: 16px;
-	@media screen and(max-width:1310px){
-		font-size: 10px;		
-	}
-	@media screen and(max-width:822px){
-		font-size: 7px;		
-	}
-}
-
-div {
-	//border: 1px solid white;
-}
-#main-container {
-	height: 100%;
-	width: 90%;
-	display: flex;
-	flex-flow: column nowrap;
-	margin: 0 auto;
-}
-
-.background {
-	background: rgb(41, 17, 17);
-	border: 1px solid rgb(116, 83, 0);
-	border-radius: 10px;	
-}
-
-.contrast-color {
-	color: white;
-}
-
-nav {
-	height: 5%;
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	margin-top: 5px;
-	.background();
-	a {
-		text-decoration: none;
-		.contrast-color();
-	}
-}
-
-#intro {
-	width:100%;
-	display: flex;
-	flex-direction: column;
-	.background();
-	margin-top: 50px;
-	#top-intro {
-		display: flex;
-		margin: 5% 10%;
-		height: 60%;
-		img {
-			width: 30%;
-			height:auto;
-			margin: 0px 5%;
-			border-radius: 50%;
-		}
-		#intro-text {
-			h1 {
-				font-size: 5rem;
-				margin: 5%;
-				.contrast-color()
-			}
-			p {
-				font-size: 2rem;
-				.contrast-color();
-				margin: 0 auto;
-			}
-			font-family: 'Acme' , sans-serif;
-			width: 60%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-	}
-
-	#hr {
-		height: 3px;
+	#main-container {
 		width: 90%;
-		color: yellow;
+		display: flex;
+		flex-flow: column nowrap;
+		margin: 0 auto;
 	}
-	#bottom-intro {
+	
+	.background {
+		background: @crimson;
+		border: 2px solid @gold;
+		border-radius: 10px;	
+	}
+	
+	.contrast-font {
+		color: @white;
+		font-family: @Acme;
+	}
+	
+	nav {
+		height: 7vh;
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 5px;
+		.background();
+		a {
+			text-decoration: none;
+			.contrast-font();
+			border-bottom: 3px solid transparent;
+		}
+		a:hover {
+			border-bottom: 3px solid @gold;
+		}
+		@media screen and (max-width:500px) {
+			flex-direction: column;
+			height: 200px;
+			border-radius: 20px;
+			justify-content: stretch;
+			background: @crimson !important;
+			z-index: 10;
+			a{
+				height: 25%;
+				width: 100%;
+				text-align: center;
+				padding-top: 15px;
+				border: 2px solid @gold;
+	
+			}
+		}
+	}
+	
+	#intro {
+		width:90%;
 		display: flex;
 		flex-direction: column;
-		width: 100%;
-		justify-content: space-around;
-		p, a {
-			margin: 20px auto;
-			.contrast-color();
-			font-size: 2rem;
-
-
+		.background();
+		margin: 5% auto 0 auto;
+		#top-intro {
+			display: flex;
+			margin: 5% 10%;
+			height: 60%;
+			img {
+				width: 30%;
+				height:auto;
+				margin: 0px 5%;
+				border-radius: 50%;
+			}
+			#intro-text {
+				h1 {
+					margin: 5%;
+					text-align: center;
+					font-size: 4.5 * @base-font;
+				}
+				p {
+					font-size: 2 * @base-font;
+					margin: 0 auto;
+				}
+				.contrast-font();
+				width: 60%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			@media screen and (max-width:800px) {
+				flex-direction: column;
+				align-items: center;
+				h1 {
+					font-size: 4 * @base-font;
+				}
+				img {
+					width: 40%;
+				}
+				#intro-text p {
+					margin: 20px auto;
+					width: 100%;
+					text-align: center;
+				}
+			}
 		}
-		
+	
+		#hr {
+			height: 3px;
+			width: 90%;
+			color: yellow;
+		}
+		#bottom-intro {
+			display: flex;
+			flex-direction: column;
+			height: 40%;
+			width: 100%;
+			justify-content: space-around;
+			p, a {
+				margin: 5% 5%;
+				font-family: @Acme;
+				color: @black;
+				font-size: 2 * @base-font;
+				text-align: center;
+			}
+			p {
+				color: @white;
+			}
+			a {
+				background: @tan;
+				padding: 15px 5px;
+				margin: 50px 40%;
+				border: 1px solid rgb(116, 83, 0);
+				border-radius: 10px;
+				text-decoration: none;
+				@media screen and (max-width:675px) {
+					margin: 50px 30%;
+				}
+			}
+			a:hover {
+				background: @gold;
+			}
+			
+		}
+	}
+	
+	#about {
+		margin: 0px auto;
+		width: 87%;
+		display: flex;
+		background: @tan;
+		border-left: 2px solid @gold;
+		border-right: 2px solid @gold;
+		padding: 4% 0;
+		#about-text {
+			width: 50%;
+			h2, p {
+				font-family: @Acme;
+				font-size: 3 * @base-font;
+				margin: 5%;
+			}
+			p {
+				font-size: 2 * @base-font;
+			}	
+		}
+		#skills {
+			width: 50%;
+			h2 {
+				font-family: @Acme;
+				font-size: 3 * @base-font;
+				margin: 5%;
+			}
+			ul {
+				.background();
+				margin: 0px 5%;
+				li {
+					.contrast-font();
+					font-family: @Acme;
+					font-size: 2 * @base-font;
+					padding: 5%;
+					border-bottom: 2px solid @black;
+				}
+			}
+		}
+		@media screen and (max-width:800px) {
+			flex-direction: column;
+			align-items: center;
+			#about-text, #skills {
+				width: 100%;
+			} 
+		}
+	}
+	
+	#history {
+		width: 95%;
+		margin: 0 auto;
+		.background();
+		.contrast-font();
+		h2 {
+			font-family: @Acme;
+			font-size: 3 * @base-font;
+			margin: 3%;
+			@media screen and (max-width:800px) {
+				font-size: 2 * @base-font;				
+			}
+			@media screen and (max-width:500px) {
+				font-size: 1.5 * @base-font;
+			}
+		}
+		#work-list {
+			display: flex;
+			justify-content: space-around;
+			font-size: 1.5 * @base-font;
+			@media screen and (max-width:800px) {
+				font-size: 1.2 * @base-font;
+			}
+			@media screen and (max-width:500px) {
+				font-size: .85 * @base-font;
+			}
+			.li-header {
+				font-size: 2 * @base-font;
+				border-bottom: 2px solid @gold;
+				@media screen and (max-width:500px) {
+					font-size: @base-font;
+				}
+			}
+		}
+		ul {
+			margin-bottom: 3%;
+
+			li {
+				margin: 10px 0;
+			}
+		}
+	
+	}
+	
+	footer {
+		width: 90%;
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		padding-top: 10px;
+		p, address {
+			color: @white;
+			width: 50%;
+			margin: 1% 0;
+			font-family: @Acme;
+			font-size: 1.2 * @base-font;
+			text-align: center;
+		}
+		p{
+			padding: 15px;
+		}
 	}
 }
-
-
 
